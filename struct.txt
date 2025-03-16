@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+struct player{
+    string name;
+    int score;
+    int level;
+};
+void displayplayer(const player &P){
+    cout<<"player name:"<<P.name<<endl;
+    cout<<"player score:"<<P.score<<endl;
+    cout<<"player level:"<<P.level<<endl;
+}
+int main(){
+    player player1 ={"Alvin",3,25};
+    player player2 ={"David",7,28};
+    
+    displayplayer(player1);
+    displayplayer(player2);
+    
+    return 0;
+}
