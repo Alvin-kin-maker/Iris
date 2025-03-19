@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int bookID, dueDay, dueMonth, dueYear, returnDay, returnMonth, returnYear, daysOverdue;
+    double fineRate = 0, fineAmount = 0;
+
+    cout << "Enter Book ID: ";
+    cin >> bookID;
+
+    cout << "Enter Due Date (DD MM YYYY): ";
+    cin >> dueDay >> dueMonth >> dueYear;
+
+    cout << "Enter Return Date (DD MM YYYY): ";
+    cin >> returnDay >> returnMonth >> returnYear;
+
+    // Calculate overdue days (simple approximation)
+    daysOverdue = (returnYear - dueYear) * 365 + (returnMonth - dueMonth) * 30 + (returnDay - dueDay);
+    daysOverdue = max(0, daysOverdue); // Prevent negative values
+
+    // Determine fine rate
+    if (daysOverdue > 0) {
+        fineRate = (daysOverdue <= 7) ? 20 : (daysOverdue <= 14) ? 50 : 100;
+        fineAmount = fineRate * daysOverdue;
+    }
+
+    // Display results
+    cout << "\nBook ID: " << bookID 
+         << "\nDue Date: " << dueDay << "-" << dueMonth << "-" << dueYear
+         << "\nReturn Date: " << returnDay << "-" << returnMonth << "-" << returnYear
+         << "\nDays Overdue: " << daysOverdue
+         << "\nFine Rate: Ksh " << fineRate 
+         << "\nTotal Fine: Ksh " << fineAmount << endl;
+
+    return 0;
+}
